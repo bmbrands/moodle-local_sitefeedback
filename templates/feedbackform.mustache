@@ -1,0 +1,60 @@
+{{!
+    This file is part the Local Analytics plugin for Moodle
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_sitefeedback/feedbackform
+
+}}
+
+<div id="feedbackform" class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-6">
+             <h3>{{#str}}actionsheader, local_sitefeedback{{/str}}</h3>
+             <a class="btn btn-secondary btn-block" href="#" data-action="like">{{#str}}like, local_sitefeedback{{/str}}</a>
+             <a class="btn btn-secondary btn-block" href="#" data-action="dislike">{{#str}}dislike, local_sitefeedback{{/str}}</a>
+             {{#externallinks}}
+                <a class="btn btn-secondary btn-block" href={{{url}}}>{{#icon}}<i class="fa {{icon}}"></i>{{/icon}}{{title}}</a>
+             {{/externallinks}}
+        </div>
+
+        <form id="sitefeedbackform" data-region="form" class="d-none col-6">
+            <input type="hidden" data-region="like" name="like" value="0">
+            <div class="d-none" id="positive">
+                <h3>{{#str}}headingpositive, local_sitefeedback{{/str}}</h3>
+            </div>
+            <div class="" id="negative">
+                <h3>{{#str}}headingnegative, local_sitefeedback{{/str}}</h3>
+            </div>
+            <div class="form-group">
+                <label for="feedbacktext">{{#str}}feedback, local_sitefeedback{{/str}}</label>
+                <textarea class="form-control" data-region="feedbacktext" id="feedbacktext" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="sitefeedbackemail">{{#str}}emailaddress, local_sitefeedback{{/str}}</label>
+                <input type="email" data-region="emailaddress" class="form-control" id="sitefeedbackemail">
+            </div>
+            <div class="form-group hidden">
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" data-region="includescreenshot" id="includescreenshot">
+                <label class="form-check-label" for="includescreenshot">{{#str}}includescreenshot, local_sitefeedback{{/str}}</label>
+              </div>
+            </div>
+            <div data-region="ajaxing" class="d-none">
+                {{#pix}}i/progressbar, core, {{#str}}saving, repository{{/str}}{{/pix}}
+            </div>
+        </form>
+    </div>
+</div>
